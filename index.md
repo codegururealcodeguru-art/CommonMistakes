@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 10 Biggest Python Mistakes Newbies Make - Legit Python Mirror</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f7f6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #FFD43B, #306998); /* Python colors */
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-top: 10px;
+        }
+
+        .toc-container {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 5px solid #306998;
+        }
+
+        .toc-title {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            display: block;
+            color: #306998;
+        }
+
+        .toc-list {
+            list-style-type: none;
+            padding: 0;
+            columns: 2; /* Two column layout for TOC */
+        }
+
+        .toc-list li {
+            margin-bottom: 8px;
+        }
+
+        .toc-list a {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.2s;
+        }
+
+        .toc-list a:hover {
+            color: #306998;
+            font-weight: bold;
+        }
+
+        section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            scroll-margin-top: 20px;
+        }
+
+        h2 {
+            color: #306998;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        /* Code Blocks */
+        pre {
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.95em;
+            margin: 15px 0;
+        }
+
+        .code-wrong {
+            background-color: #fff0f0;
+            border: 1px solid #ffcccc;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .code-correct {
+            background-color: #f0fdf4;
+            border: 1px solid #c3e6cb;
+            border-left: 4px solid #2ecc71;
+        }
+
+        .label {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.8em;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .label-wrong { color: #e74c3c; }
+        .label-correct { color: #2ecc71; }
+
+        /* Syntax Highlighting Simulation */
+        .k { color: #000080; font-weight: bold; } /* Keyword */
+        .s { color: #a31515; } /* String */
+        .c { color: #008000; font-style: italic; } /* Comment */
+        .f { color: #795e26; } /* Function */
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 30px;
+            cursor: pointer;
+            background-color: #306998;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background-color: #26557c;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .toc-list { columns: 1; }
+        }
+    </style>
+    <script>
+        function downloadGuide() {
+            const content = document.body.innerText;
+            const blob = new Blob([content], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "Python_Mistakes_Guide.txt";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>The 10 Biggest Python Mistakes Newbies Make</h1>
+    <p>Avoid these common pitfalls and level up your Python skills!</p>
+</header>
+
+<div class="toc-container">
+    <span class="toc-title">Table of Contents</span>
+    <ul class="toc-list">
+        <li><a href="#m1">1. Not Using Proper Indentation</a></li>
+        <li><a href="#m2">2. Forgetting to Close Files</a></li>
+        <li><a href="#m3">3. Confusing = with ==</a></li>
+        <li><a href="#m4">4. Scope & Lifetime</a></li>
+        <li><a href="#m5">5. Using import *</a></li>
+        <li><a href="#m6">6. Forgetting to Handle Exceptions</a></li>
+        <li><a href="#m7">7. Overusing Global Variables</a></li>
+        <li><a href="#m8">8. Inefficient String Concatenation</a></li>
+        <li><a href="#m9">9. Neglecting Documentation</a></li>
+        <li><a href="#m10">10. Ignoring Virtual Environments</a></li>
+    </ul>
+</div>
+
+<section id="m1">
+    <h2>Mistake 1: Not Using Proper Indentation</h2>
+    <p>Indentation is crucial in Python because it defines code blocks. Unlike other languages that use curly braces {}, Python relies on spaces. You should always use 4 spaces for indentation (PEP 8).</p>
+    
+    <span class="label label-wrong">Wrong:</span>
+    <pre class="code-wrong"><code>score = 67
+<span class="k">if</span> score > 50:
+  <span class="f">print</span>(<span class="s">'you pass'</span>) <span class="c"># 2 spaces (inconsistent)</span>
+
+score = 67
+<span class="k">if</span> score > 50:
+    <span class="f">print</span>(<span class="s">'you pass'</span>) <span class="c"># 4 spaces</span></code></pre>
+
+    <span class="label label-correct">Correct:</span>
+    <pre class="code-correct"><code>score = 67
+<span class="k">if</span> score > 50:
+    <span class="f">print</span>(<span class="s">'you pass'</span>) <span class="c"># Consistent 4 spaces</span></code></pre>
+</section>
+
+<section id="m2">
+    <h2>Mistake 2: Forgetting to Close Files</h2>
+    <p>Forgetting to close files can cause issues like data not being saved or resources being locked. Using the <code>with</code> statement is the best practice.</p>
+
+    <span class="label label-wrong">Wrong:</span>
+    <pre class="code-wrong"><code>f = <span class="f">open</span>(<span class="s">'dataset.txt'</span>, <span class="s">'w'</span>)
+f.write(<span class="s">'new_data'</span>)
+f.close() 
+<span class="c"># If an error happens before close(), the file stays open!</span></code></pre>
+
+    <span class="label label-correct">Correct:</span>
+    <pre class="code-correct"><code><span class="k">with</span> <span class="f">open</span>(<span class="s">'dataset.txt'</span>, <span class="s">'w'</span>) <span class="k">as</span> f:
+    f.write(<span class="s">'new_data'</span>)
+<span class="c"># Automatically closes the file, even if errors occur.</span></code></pre>
+</section>
+
+<section id="m3">
+    <h2>Mistake 3: Confusing = with ==</h2>
+    <p>Newbies often mix up the assignment operator (<code>=</code>) and the comparison operator (<code>==</code>).</p>
+
+    <span class="label label-wrong">Wrong:</span>
+    <pre class="code-wrong"><code>score = 67
+<span class="k">if</span> score = 50: <span class="c"># Syntax Error!</span>
+    <span class="f">print</span>(<span class="s">'You passed!'</span>)</code></pre>
+
+    <span class="label label-correct">Correct:</span>
+    <pre class="code-correct"><code>score = 67
+<span class="k">if</span> score == 50: <span class="c"># Correct comparison</span>
+    <span class="f">print</span>(<span class="s">'You passed!'</span>)</code></pre>
+</section>
+
+<section id="m4">
+    <h2>Mistake 4: Not Understanding Scope & Lifetime</h2>
+    <p>Scope defines where a variable is accessible. Variables defined inside a function are not accessible outside of it.</p>
+
+    <span class="label label-wrong">Wrong:</span>
+    <pre class="code-wrong"><code><span class="k">def</span> <span class="f">greet</span>():
+    message = <span class="s">"Hello!"</span>
+
+<span class="f">print</span>(message) <span class="c"># Error: message is not defined globally</span></code></pre>
+
+    <span class="label label-correct">Correct:</span>
+    <pre class="code-correct"><code><span class="k">def</span> <span class="f">greet</span>():
+    message = <span class="s">"Hello!"</span>
+    <span class="f">print</span>(message) <span class="c"># Correct usage inside scope</span></code></pre>
+</section>
+
+<section id="m5">
+    <h2>Mistake 5: Using import *</h2>
+    <p>Importing everything using <code>*</code> pollutes the namespace and can lead to conflicts. It is better to be explicit.</p>
+
+    <span class="label label-wrong">Wrong:</span>
+    <pre class="code-wrong"><code><span class="k">from</span> math <span class="k">import</span> *
+<span class="f">print</span>(floor(2.4))
+<span class="f">print</span>(pi) <span class="c"># Where did these come from? Unclear.</span></code></pre>
+
+    <span class="label label-correct">Correct:</span>
+    <pre class="code-correct"><code><span class="k">import</span> math
+<span class="f">print</span>(math.floor(2.4))
+<span class="f">print</span>(math.pi) <span class="c"># Clear and clean namespace</span></code></pre>
+</section>
+
+<section id="m6">
+    <h2>Mistake 6: Forgetting to Handle Exceptions</h2>
+    <p>Handling exceptions prevents crashes and allows you to show friendly error messages.</p>
+
+    <span class="label label-wrong">Wrong:</span>
+    <pre class="code-wrong"><code>age = <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Enter your age: "</span>))
+<span class="f">print</span>(<span class="s">"Your age is:"</span>, age)
+<span class="c"># Crashes if user enters "ten"</span></code></pre>
+
+    <span class="label label-correct">Correct:</span>
+    <pre class="code-correct"><code><span class="k">try</span>:
+    age = <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Enter your age: "</span>))
+    <span class="f">print</span>(<span class="s">"Your age is:"</span>, age)
+<span class="k">except</span> ValueError:
+    <span class="f">print</span>(<span class="s">"Please enter a valid number."</span>)</code></pre>
+</section>
+
+<section id="m7">
+    <h2>Mistake 7: Overusing Global Variables</h2>
+    <p>Modifying global variables inside functions can lead to bugs. It's often better to pass arguments and return values.</p>
+
+    <span class="label label-wrong">Wrong:</span>
+    <pre class="code-wrong"><code>count = 0
+<span class="k">def</span> <span class="f">increment</span>():
+    count += 1 <span class="c"># UnboundLocalError</span>
+increment()</code></pre>
+
+    <span class="label label-correct">Better Practice:</span>
+    <pre class="code-correct"><code><span class="k">def</span> <span class="f">calculate_sum</span>():
+    result = 0
+    <span class="k">for</span> i <span class="k">in</span> <span class="f">range</span>(1, 5):
+        result += i
+    <span class="k">return</span> result <span class="c"># Use return values instead of globals</span></code></pre>
+</section>
+
+<section id="m8">
+    <h2>Mistake 8: Inefficient String Concatenation</h2>
+    <p>Using <code>+</code> repeatedly in a loop is slow because strings are immutable. Use <code>.join()</code> instead.</p>
+
+    <span class="label label-wrong">Wrong:</span>
+    <pre class="code-wrong"><code>msg = <span class="s">""</span>
+<span class="k">for</span> name <span class="k">in</span> names:
+    msg += name + <span class="s">", "</span></code></pre>
+
+    <span class="label label-correct">Correct:</span>
+    <pre class="code-correct"><code><span class="c"># Efficient concatenation</span>
+msg = <span class="s">", "</span>.join(names)</code></pre>
+</section>
+
+<section id="m9">
+    <h2>Mistake 9: Neglecting Documentation</h2>
+    <p>Docstrings help others (and future you) understand what your functions do.</p>
+
+    <span class="label label-wrong">Wrong:</span>
+    <pre class="code-wrong"><code><span class="k">def</span> <span class="f">add</span>(a, b):
+    <span class="k">return</span> a + b</code></pre>
+
+    <span class="label label-correct">Correct:</span>
+    <pre class="code-correct"><code><span class="k">def</span> <span class="f">add</span>(a, b):
+    <span class="s">"""Calculates the sum of two numbers."""</span>
+    <span class="k">return</span> a + b</code></pre>
+</section>
+
+<section id="m10">
+    <h2>Mistake 10: Ignoring Virtual Environments</h2>
+    <p>Installing libraries globally causes version conflicts. Always use a virtual environment for each project.</p>
+
+    <span class="label label-wrong">Wrong:</span>
+    <pre class="code-wrong"><code>pip install numpy <span class="c"># Installing globally</span></code></pre>
+
+    <span class="label label-correct">Correct:</span>
+    <pre class="code-correct"><code>python -m venv myenv
+source myenv/bin/activate
+pip install numpy <span class="c"># Installing in isolated environment</span></code></pre>
+</section>
+
+<button onclick="downloadGuide()">⬇ Download Guide as Text File</button>
+
+<footer>
+    &copy; 2026 Legit Python Mirror. Generated for educational purposes.
+</footer>
+
+</body>
+</html>
